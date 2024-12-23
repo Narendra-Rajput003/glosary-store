@@ -141,83 +141,80 @@ export default function Home() {
 
       {/* Popular Products */}
 
-      <div className="flex flex-col items-center my-5">
-        <p className="text-3xl text-black font-bold">Popular Products</p>
+      <div className="flex flex-col items-center my-8">
+  <p className="text-3xl text-black font-bold mb-6">Popular Products</p>
 
-        <div className="w-3/4 mt-5">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {popularProducts.map((product) => (
-              <div
-                key={product.id}
-                className="flex flex-col  rounded-lg shadow-md bg-white"
-              >
-                <div className="relative mx-auto">
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    width={100}
-                    height={100}
-                    className="rounded-lg"
-                  />
-                </div>
-                <div className="flex flex-row justify-between">
-                  <div className="flex flex-col space-y-1">
-                    <p className="text-black text-md font-semibold">
-                      {product.name}
-                    </p>
-                    <div className=" flex items-center ">
-                      {[...Array(5)].map((_, index) => (
-                        <Star
-                          key={index}
-                          className={`w-4 h-4 ${
-                            index < Number(product.rating)
-                              ? "text-yellow-500"
-                              : "text-gray-300"
-                          }`}
-                        />
-                      ))}
-                       <span className="text-gray-500 text-sm">
-                        {product.totalReviews}
-                    </span>
-                    </div>
-                   
-                    <div className="flex items-center space-x-2 mt-3 border-1 border-black rounded-sm">
-                      <button
-                        onClick={() => setCount(count - 1)}
-                        className="bg-red-500 text-white px-2 py-1 rounded"
-                      >
-                        -
-                      </button>
-                      <span>{count}</span>
-                      <button
-                        onClick={() => setCount(count + 1)}
-                        className="bg-green-500 text-white px-2 py-1 rounded"
-                      >
-                        +
-                      </button>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col items-center space-y-2 ">
-                    <span className="text-black text-sm font-bold mt-2">
-                      ${product.price}
-                    </span>
-                    <div className="flex flex-col space-x-2 ">
-                      <Image
-                        src="/assets/icons/shopping-icon.svg"
-                        alt="cart"
-                        width={20}
-                        height={20}
-                      />
-                      <p className="text-black">Cart</p>
-                    </div>
-                  </div>
-                </div>
+  <div className="w-full lg:w-3/4 px-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      {popularProducts.map((product) => (
+        <div
+          key={product.id}
+          className="flex flex-col items-center rounded-lg shadow-md bg-white p-4"
+        >
+          <div className="w-full flex justify-center mb-4 ">
+            <div className="py-1 px-2 bg-white rounded-full">
+              <Image src="/assets/icons/heart-icon.svg" alt="star" width={20} height={20} className="text-pink " />
+            </div>
+            <Image
+              src={product.image}
+              alt={product.name}
+              width={100}
+              height={100}
+              className="rounded-lg object-cover"
+            />
+          </div>
+          <div className="flex flex-col items-start w-full">
+            <p className="text-black text-lg font-semibold mb-2">{product.name}</p>
+            <div className="flex items-center space-x-1 mb-3">
+              {[...Array(5)].map((_, index) => (
+                <Star
+                  key={index}
+                  className={`w-4 h-4 ${
+                    index < Number(product.rating) ? "text-yellow-500" : "text-gray-300"
+                  }`}
+                />
+              ))}
+              <span className="text-gray-500 text-sm">{product.totalReviews}</span>
+            </div>
+            <div className="flex items-center justify-between w-full mt-2">
+              <div className="flex items-center border rounded-lg border-gray-300">
+                <button
+                  onClick={() => setCount(count - 1)}
+                  className="px-3 py-1 text-xl text-gray-700 hover:bg-gray-100"
+                >
+                  -
+                </button>
+                <span className="px-4 py-1 text-gray-700 font-bold">{count}</span>
+                <button
+                  onClick={() => setCount(count + 1)}
+                  className="px-3 py-1 text-xl text-gray-700 hover:bg-gray-100"
+                >
+                  +
+                </button>
               </div>
-            ))}
+              <span className="text-black text-lg font-bold">{product.price}</span>
+            </div>
+            <button className="mt-4 flex items-center justify-center w-full py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-all">
+              <Image
+                src="/assets/icons/shopping-icon.svg"
+                alt="cart"
+                width={20}
+                height={20}
+                className="mr-2"
+              />
+                Cart
+            </button>
           </div>
         </div>
-      </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+
+            <div className="flex flex-col item-center"> 
+            <p className="text-2xl font-bold text-center">Deal Of The Week</p>
+            </div>
     </div>
   );
 }
